@@ -1,0 +1,17 @@
+---
+workspace: /root
+ntp_timezone: America/Denver
+
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
+  - "8080"
+
+apache_vhosts:
+  - {servername: "phb.local", documentroot: "/var/www/vhosts/phblocal"}
+
+tomcat6_hostname: localhost
+tomcat6_catalina_port: 8080
+
+solr_version: "4.2.1"

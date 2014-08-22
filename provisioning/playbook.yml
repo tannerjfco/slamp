@@ -1,0 +1,32 @@
+---
+# Ansible Playbook for Lamp w/ Solr tuned for Drupal
+#
+# @author tannerjfco
+#
+# Based on https://github.com/geerlingguy/ansible-vagrant-examples
+
+- hosts: slamp
+  gather_facts: yes
+
+  vars_files:
+   - vars/main.yml
+
+  pre_tasks:
+   - name: Update apt cache if needed
+     apt: update_cache=yes cache_valid_time=3600
+   - name: Add repo for PHP 5.4.x
+     apt_repository: repo='ppa:ondrej/php5-oldstable'
+
+  roles:
+   - geerlingguy.firewall
+   - geerlingguy.ntp
+   - geerlingguy.postfix
+   - geerlingguy.mysql
+   - geerlingguy.apache
+   - geerlingguy.php
+   - geerlingguy.php-mysql
+   - geerlingguy.composer
+   - geerlingguy.drush
+   - geerlingguy.java
+   - geerlingguy.tomcat6
+   - geerlingguy.solr

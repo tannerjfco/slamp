@@ -1,0 +1,12 @@
+geerlingguy.firewall
+geerlingguy.ntp
+geerlingguy.postfix
+geerlingguy.mysql
+geerlingguy.apache
+geerlingguy.php
+geerlingguy.php-mysql
+geerlingguy.composer
+geerlingguy.drush
+geerlingguy.java
+geerlingguy.tomcat6
+geerlingguy.solr
