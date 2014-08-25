@@ -28,7 +28,7 @@
    - geerlingguy.composer
    - geerlingguy.drush
    - geerlingguy.java
-   - alexanderjardim.tomcat
-   - alexanderjardim.solr
+   - geerlingguy.tomcat6
+   - geerlingguy.solr
    - vivaserver.phpmyadmin
    - atsaki.nfs
