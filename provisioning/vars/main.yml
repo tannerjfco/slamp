@@ -8,10 +8,16 @@ firewall_allowed_tcp_ports:
   - "443"
   - "8080"
 
+apache_create_vhosts: true
 apache_vhosts:
-  - {servername: "phb.local", documentroot: "/var/www/vhosts/phblocal"}
-
-tomcat6_hostname: localhost
-tomcat6_catalina_port: 8080
+  - { servername: "phb.local", documentroot: "/var/www/phblocal" }
+  - { servername: "nbmshow.local", documentroot: "/var/www/nbmshowlocal/" }
+apache_mods_enabled:
+  - rewrite.load
 
 solr_version: "4.2.1"
+
+nfs_exported_directories:
+  - path: /var/www
+    hosts:
+      - { name: "*", options: ["no_subtree_check", "all_squash", "async"] }

@@ -8,5 +8,7 @@ geerlingguy.php-mysql
 geerlingguy.composer
 geerlingguy.drush
 geerlingguy.java
-geerlingguy.tomcat6
-geerlingguy.solr
+alexanderjardim.tomcat
+alexanderjardim.solr
+vivaserver.phpmyadmin
+atsaki.nfs
