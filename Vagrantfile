@@ -33,6 +33,11 @@ Vagrant.configure("2") do |config|
     # ansible.raw_arguments = ['-v']
   end
 
+  # Setup NFS share
+  config.vm.synced_folder "~/Sites/slamp", "/var/www", type: "nfs"
+  config.nfs.map_uid = Process.uid   
+  config.nfs.map_gid = Process.gid 
+
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
   config.vm.define :slamp do |slamp|
     slamp.vm.hostname = "slamp"

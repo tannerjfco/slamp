@@ -15,9 +15,14 @@ apache_vhosts:
 apache_mods_enabled:
   - rewrite.load
 
-solr_version: "4.2.1"
+mysql_databases:
+  - name: phblocal
+  - name: nbmshowlocal
 
-nfs_exported_directories:
-  - path: /var/www
-    hosts:
-      - { name: "*", options: ["no_subtree_check", "all_squash", "async"] }
+mysql_users:
+  - name: phblocal
+    password: phblocal
+    priv: "phblocal.*:ALL"
+  - name: nbmshowlocal
+    password: nbmshowlocal
+    priv: "nbmshowlocal.*:ALL"
