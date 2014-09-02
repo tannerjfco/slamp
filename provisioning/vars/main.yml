@@ -10,19 +10,19 @@ firewall_allowed_tcp_ports:
 
 apache_create_vhosts: true
 apache_vhosts:
-  - { servername: "phb.local", documentroot: "/var/www/phblocal" }
-  - { servername: "nbmshow.local", documentroot: "/var/www/nbmshowlocal/" }
+  - { servername: "site1.local", documentroot: "/var/www/site1local" }
+  - { servername: "site2.local", documentroot: "/var/www/site2local/" }
 apache_mods_enabled:
   - rewrite.load
 
 mysql_databases:
-  - name: phblocal
-  - name: nbmshowlocal
+  - name: site1local
+  - name: site2local
 
 mysql_users:
-  - name: phblocal
-    password: phblocal
-    priv: "phblocal.*:ALL"
-  - name: nbmshowlocal
-    password: nbmshowlocal
-    priv: "nbmshowlocal.*:ALL"
+  - name: site1local
+    password: site1local
+    priv: "site1local.*:ALL"
+  - name: site2local
+    password: site2local
+    priv: "site2local.*:ALL"
