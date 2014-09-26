@@ -5,7 +5,7 @@
 #
 # Based on https://github.com/geerlingguy/ansible-vagrant-examples
 
-- hosts: slamp
+- hosts: slamp1
   gather_facts: yes
 
   vars_files:
@@ -14,20 +14,23 @@
   pre_tasks:
    - name: Update apt cache if needed
      apt: update_cache=yes cache_valid_time=3600
+     sudo: yes
    - name: Add repo for PHP 5.4.x
      apt_repository: repo='ppa:ondrej/php5-oldstable'
+     sudo: yes
 
   roles:
-   - geerlingguy.firewall
-   - geerlingguy.ntp
-   - geerlingguy.postfix
-   - geerlingguy.mysql
-   - geerlingguy.apache
-   - geerlingguy.php
-   - geerlingguy.php-mysql
-   - geerlingguy.composer
-   - geerlingguy.drush
-   - geerlingguy.java
-   - geerlingguy.tomcat6
-   - geerlingguy.solr
-   - vivaserver.phpmyadmin
+   - { role: geerlingguy.firewall, sudo: yes }
+   - { role: geerlingguy.ntp, sudo: yes }
+   - { role: geerlingguy.postfix, sudo: yes }
+   - { role: geerlingguy.mysql, sudo: yes }
+   - { role: geerlingguy.apache, sudo: yes }
+   - { role: geerlingguy.php, sudo: yes }
+   - { role: geerlingguy.php-mysql, sudo: yes }
+   - { role: geerlingguy.composer, sudo: yes }
+   - { role: geerlingguy.drush, sudo: yes }
+   - { role: geerlingguy.java, sudo: yes }
+   - { role: geerlingguy.tomcat6, sudo: yes }
+   - { role: geerlingguy.solr, sudo: yes }
+   - { role: vivaserver.phpmyadmin, sudo: yes }
+   - { role: drush-deploy, sudo: no }

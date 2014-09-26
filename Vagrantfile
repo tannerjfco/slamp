@@ -9,11 +9,11 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
 
   # Enable host-only access to the machine using a specific IP.
-  config.vm.network :private_network, ip: "192.168.50.6"
+  config.vm.network :private_network, ip: "192.168.50.7"
 
   # Provider-specific configuration for VirtualBox.
   config.vm.provider :virtualbox do |v|
-    v.customize ["modifyvm", :id, "--name", "slamp"]
+    v.customize ["modifyvm", :id, "--name", "slamp1"]
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--memory", 512]
     v.customize ["modifyvm", :id, "--cpus", 2]
@@ -25,12 +25,15 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.inventory_path = "provisioning/inventory"
     # Run commands as root.
-    ansible.sudo = true
+    # ansible.sudo = true
     # Log/Debug Verbosity
-    ansible.verbose = 'v'
+    ansible.verbose = 'vv'
     # Ensure host key checking disabled to prevent connection problems.
     ansible.host_key_checking = false
-    # ansible.raw_arguments = ['-v']
+    # ansible.raw_arguments = ['-s']
+    ansible.extra_vars = { ansible_ssh_user: 'vagrant', 
+                 ansible_connection: 'ssh',
+                 ansible_ssh_args: '-o ForwardAgent=yes'}
   end
 
   # Setup NFS share
@@ -39,8 +42,9 @@ Vagrant.configure("2") do |config|
   config.nfs.map_gid = Process.gid 
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define :slamp do |slamp|
-    slamp.vm.hostname = "slamp"
+  config.vm.define :slamp1 do |slamp1|
+    slamp1.ssh.forward_agent = true
+    slamp1.vm.hostname = "slamp1"
   end
 
 end

@@ -9,11 +9,15 @@ firewall_allowed_tcp_ports:
   - "8080"
 
 apache_create_vhosts: true
+
 apache_vhosts:
   - { servername: "site1.local", documentroot: "/var/www/site1local" }
   - { servername: "site2.local", documentroot: "/var/www/site2local/" }
+  - { servername: "site4.local", documentroot: "/var/www/site4local/" }
+
 apache_mods_enabled:
   - rewrite.load
+  - ssl.load
 
 mysql_databases:
   - name: site1local
@@ -26,3 +30,7 @@ mysql_users:
   - name: site2local
     password: site2local
     priv: "site2local.*:ALL"
+
+project_name: site4local
+project_repo_url: git@bitbucket.org/nbminc/pub_phb.git
+project_repo_ver: master

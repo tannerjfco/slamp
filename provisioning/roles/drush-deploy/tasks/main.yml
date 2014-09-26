@@ -1,0 +1,11 @@
+---
+- name: Pull project repo.
+  sudo_user: vagrant
+  git: >
+    repo=ssh://{{ project_repo_url }}
+    dest=/assets/{{ project_name }}
+    version={{ project_repo_ver }}
+    accept_hostkey=yes
+    ssh_opts="-o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes -o UserKnownHostsFile=/dev/null"
+- name: Keep only the make files
+  command: find /assets/{{ project_name }} ! -name "*.make" -delete
